@@ -1,162 +1,111 @@
-# Retail Sales Forecasting & Pricing Analytics (BI-Focused)
+# Retail Sales & Pricing Analytics (Power BI)
+### Where discounts help, where they hurt, and which regions earn their sales
 
-![Status](https://img.shields.io/badge/Status-Complete-success)
-![Focus](https://img.shields.io/badge/Role-Business%20Intelligence-yellow)
-![Dashboards](https://img.shields.io/badge/Deliverable-Power%20BI-blue)
-![Forecasting](https://img.shields.io/badge/Analytics-Forecasting-green)
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square&logo=powerbi&logoColor=black)
+![DAX](https://img.shields.io/badge/DAX-F2C811?style=flat-square&logo=powerbi&logoColor=black)
+![Power Query](https://img.shields.io/badge/Power%20Query-217346?style=flat-square&logo=microsoft&logoColor=white)
 
-**Business Intelligence analysis delivering reliable sales forecasts, pricing insights, and executive dashboards to support inventory planning, margin protection, and regional performance management.**
+**Troy Dela Rosa** | Independent academic project, Data Management (COMP-2702), Red River College Polytechnic | Apr 2026
+<!-- [CONFIRM] Course and date for the Power BI report. If the Jan 2026 Orange Data Mining work was a different course, it is described separately below. -->
 
----
-
-## Executive Summary
-
-Business Intelligence teams help leaders understand **what is happening, why it is happening, and what actions to take next**.
-
-This project delivers an end-to-end **BI solution** using historical retail transaction data to support:
-
-- Sales forecasting and demand planning  
-- Discount and pricing performance analysis  
-- Regional and category-level performance monitoring  
-- Executive reporting through interactive Power BI dashboards  
-
-The analysis progresses from **foundational diagnostic analysis** to **validated forecasting models** and **decision-ready dashboards**, mirroring how BI work is delivered in real organizations.
-
-**Outcome:** Forecast reliability improved from a weak baseline (23% variance explained) to a robust model (~70% variance explained), enabling leadership to plan inventory, pricing, and regional investment with greater confidence.
+**Data:** Superstore sample retail dataset (Kaggle): 9,994 order lines, 2014 to 2017, four U.S. regions, three product categories.
 
 ---
 
-## BI Use Case & Stakeholder Value
+## The business question
 
-This analysis is designed to support:
+A retailer can grow sales by discounting, but discounts come straight out of margin. This report asks:
 
-- **Executives** – high-level performance visibility and forward-looking insights  
-- **Regional Managers** – demand planning and performance tracking  
-- **Merchandising & Pricing Teams** – discount effectiveness and margin protection  
-- **Operations & Supply Chain** – inventory planning and stock allocation  
-
-**BI Objective:** Transform raw transactional data into **trusted metrics, forecasts, and dashboards** that directly support business decisions.
+> **Which regions and categories are earning their sales, and where is discounting costing more than it brings in?**
 
 ---
 
-## Business Questions Addressed
+## Key findings
 
-1. What factors most strongly influence sales performance?  
-2. How reliable are baseline forecasting methods used in reporting today?  
-3. Can forecasting accuracy be improved to support planning decisions?  
-4. How do discounts affect both revenue and profitability?  
-5. Which regions and categories show sustained, actionable growth?  
+**1. The deepest discounts came with the weakest margin.**
+Central gave the highest average discount (24%) and earned the lowest profit margin of any region (7.9%). The West gave the lowest average discount (11%) and earned the best margin (14.9%) on the highest sales ($725K).
 
----
+| Region | Total sales | Average discount | Profit margin |
+|---|---:|---:|---:|
+| West | $725K | 10.9% | 14.9% |
+| East | $679K | 14.5% | 13.5% |
+| Central | $501K | 24.0% | 7.9% |
+| South | $392K | 14.7% | 11.9% |
+| **Total** | **$2.30M** | | **12.5%** |
 
-## Data Overview
+**2. Furniture sells, but barely makes money.**
+Furniture brought in $739K in sales at a 2.5% margin, compared with about 17% for Office Supplies and Technology. In Central, furniture sales lost money (−1.9% margin).
 
-- **Source:** Superstore retail transactions (Kaggle)  
-- **Volume:** ~10,000 orders  
-- **Dimensions:** Region, Category, Sub-Category, Segment, Time  
-- **Measures:** Sales, Profit, Quantity, Discount  
+**3. Sales grew, with a strong end-of-year peak.**
+Annual sales rose from $471K (2015) to $733K (2017). Every region's sales peaked in September and again in November or December, and Q4 was the strongest quarter for every category.
 
-The dataset is representative of a mid-sized retail operation and well-suited for BI reporting, trend analysis, and forecasting.
-
----
-
-## BI & Analytical Approach
-
-### 1. Diagnostic Analysis (Reporting Foundation)
-
-Initial analysis focused on validating key relationships and identifying reporting risks.
-
-**Key findings:**
-- Sales and profit are positively correlated, but excessive discounting creates loss-making outliers  
-- Discount practices vary significantly by category, reducing pricing consistency  
-- Regional performance is uneven, requiring targeted reporting rather than aggregate views  
-
-A **Linear Regression baseline** explained ~23% of sales variance, highlighting the limitations of simple forecasting methods often relied on in reporting.
+![Sales by Region](images/02_sales_by_region.png)
 
 ---
 
-### 2. Forecasting & Trend Analysis (Decision Support)
+## What I'd recommend
 
-A **Random Forest forecasting model** was introduced to capture non-linear interactions common in retail data.
-
-**Results:**
-- ~70% variance explained  
-- Strong alignment between predicted and actual sales (r ≈ 0.83)  
-- Material improvement over baseline forecasting  
-
-Rolling **moving averages** were applied to smooth volatility and surface sustained regional trends, particularly strong growth in the West region.
+1. **Review Central's discounting first, starting with furniture.** It has the deepest discounts, the lowest margin, and the only category-region combination that loses money.
+2. **Use the West as the benchmark.** It shows that higher sales don't require deeper discounts in this data.
+3. **Plan inventory and staffing around September and Q4,** when sales peak in every region.
+4. **Test before changing prices.** These are patterns in historical data, not proof that discounts caused the lower margins. A controlled discount test in one region would confirm it.
 
 ---
 
-## Key BI Insights
+## The report (5 pages)
 
-- Sales performance depends on interacting drivers (discounts, quantity, category, region), not single metrics  
-- Moderate discounting supports sales growth while preserving margins  
-- Deep discounting produces diminishing returns and margin risk  
-- The West region demonstrates consistent, trend-backed growth  
+| Page | What it answers |
+|---|---|
+| Dashboard | Overall sales, profit, units and discount; sales by state, year and category |
+| Sales by Region | How sales, discount and margin compare across regions and categories |
+| Sales Trends | Monthly sales by region with moving averages, filterable by year and region |
+| Category Performance | Sales by quarter, category and sub-category |
+| Certified Visual | (not shown) |
 
----
+<details>
+<summary><b>More screenshots</b></summary>
 
-## Power BI Deliverables
+<br/>
 
-This project includes **executive-ready Power BI dashboards** designed for routine business use:
+**Dashboard**
+![Dashboard](images/01_dashboard.png)
 
-- Sales and profit overview with regional breakdowns  
-- Category and sub-category performance analysis  
-- Discount impact visualization (sales vs. margin trade-offs)  
-- Rolling trend and forecast views with confidence ranges  
+**Sales Trends by Region**
+![Sales trend by region](images/03_sales_trend_by_region.png)
 
-Dashboards are structured to support:
-- Monthly executive reviews  
-- Regional performance check-ins  
-- Pricing and inventory planning discussions  
+**Category Performance**
+![Category performance](images/04_category_performance.png)
 
----
-
-## Recommendations
-
-1. **Standardize Discount Reporting**  
-   Establish consistent discount thresholds by category to reduce margin leakage and improve comparability.
-
-2. **Adopt Forecast-Backed Planning**  
-   Use predictive forecasts rather than historical averages for inventory and staffing decisions.
-
-3. **Focus on Sustained Growth Regions**  
-   Prioritize regions with trend-backed growth signals rather than reacting to short-term volatility.
-
-4. **Embed Trend Monitoring in Reviews**  
-   Incorporate rolling averages and forecast deltas into monthly reporting to enable proactive decisions.
+</details>
 
 ---
 
-## Tools & BI Stack
+## How it was built
 
-- **Power BI Desktop** – executive dashboards and forecasting visuals    
-- **Random Forest & Linear Regression** – forecasting comparison  
-- **Orange Data Mining** – visual workflow validation  
-
----
-
-## Why This Matters for a BI Analyst Role
-
-This project demonstrates the ability to:
-
-- Translate business questions into metrics and dashboards  
-- Validate and challenge baseline reporting assumptions  
-- Improve forecast reliability used in planning discussions  
-- Communicate insights clearly to non-technical stakeholders  
-- Balance analytical rigor with usability and trust  
+- **Data model:** transformed the 9,994-row sales file into a star schema in Power Query, splitting, typing and deduplicating customer, product and location dimensions, with a DAX date table.
+- **Measures:** DAX measures for sales, profit, margin, distinct orders and year-over-year growth (`SAMEPERIODLASTYEAR`).
+- **Report design:** 5 pages with KPI cards, year and region slicers, and insight-style chart titles that state the finding rather than just the metric.
+- **Publishing:** published to Power BI Service.
 
 ---
 
-## Notes
+## Earlier exploratory modeling
 
-This repository reflects **how BI work is delivered inside organizations**—from data exploration and validation to dashboards, forecasts, and executive-ready insights.
+Before building the report, I explored the same data in **Orange Data Mining**, comparing a Linear Regression baseline with a Random Forest model for predicting sales, and looked at how discount levels relate to profit.
 
-While the dataset is simulated, the BI framework and decision-support approach are directly transferable to real-world retail, e-commerce, and consumer data environments.
+<!-- [NEEDS EVIDENCE] The earlier README claimed ~23% (Linear Regression) vs ~70% (Random Forest) variance explained and r ≈ 0.83. Only add these back if you still have the Orange workflow or output, and check first which features the model used: if Profit was an input, the 70% is leakage (profit is calculated from sales). -->
 
 ---
 
-### ⭐ Portfolio Signal
+## Limitations
 
-This project demonstrates **Business Intelligence thinking**, showing how data becomes insight and insight becomes action.
+- **Practice dataset.** Superstore is a widely used sample dataset, not a real company's data.
+- **Patterns, not causes.** The link between discounts and margin is a correlation across regions and categories.
+- **Data quality.** About $9.9K of sales has a blank category, and the year slicers include 2018 although the data ends in 2017. Both are being cleaned up.
+- **Report naming.** The "Category Performance" page is titled for the West region, but its totals ($2.30M sales) match the whole company, so it appears to be unfiltered.
+
+---
+
+## Tools
+
+Power BI Desktop, Power BI Service, Power Query, DAX, Orange Data Mining (exploration)
